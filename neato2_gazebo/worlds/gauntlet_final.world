@@ -24,7 +24,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/jersey_barrier</uri>
             </mesh>
           </geometry>
         </visual>

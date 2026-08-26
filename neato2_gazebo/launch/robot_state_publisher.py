@@ -30,6 +30,7 @@ def generate_launch_description():
     tf_prefix = LaunchConfiguration('tf_prefix')
     tf_prefix_command = DeclareLaunchArgument('tf_prefix', default_value='')
     urdf_file_name = 'neato.urdf'
+    sdf_file_name = 'neato_with_camera.sdf'
 
     print('urdf_file_name : {}'.format(urdf_file_name))
 
@@ -37,6 +38,11 @@ def generate_launch_description():
         get_package_share_directory('neato2_gazebo'),
         'urdf',
         urdf_file_name)
+
+    # sdf = os.path.join(
+    #     get_package_share_directory('neato2_gazebo'),
+    #     'urdf',
+    #     sdf_file_name)
 
     return LaunchDescription([
         tf_prefix_command,

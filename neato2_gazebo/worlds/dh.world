@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<sdf version="1.4">
+<sdf version="1.9">
   <world name="default">
     <light type="point" name="point">
       <pose>10 -10 6 0 0 0</pose>
