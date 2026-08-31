@@ -44,7 +44,7 @@
     <parent link="base_link"/>
     <child link="wheel_left_link"/>
     <origin rpy="0 0 0" xyz="0.00 0.1175 0.0250"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 1 0" dynamics="1.0 50"/>
   </joint>
 
   <link name="wheel_left_link">
@@ -60,18 +60,28 @@
       </geometry>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
     </collision>
+    <surface>
+      <friction>
+        <ode>
+          <mu>30.0</mu>
+          <mu2>30.0</mu2>
+        </ode>
+      </friction>
+    </surface>
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
     </inertial>
   </link>
+  
   <joint name="wheel_right_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_right_link"/>
     <origin rpy="0 0 0" xyz="0.00 -0.1175 0.0250"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 1 0" dynamics="1.0 50"/>
   </joint>
+  
   <link name="wheel_right_link">
     <visual>
       <geometry>
@@ -85,6 +95,14 @@
       </geometry>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
     </collision>
+    <surface>
+      <friction>
+        <ode>
+          <mu>30.0</mu>
+          <mu2>30.0</mu2>
+        </ode>
+      </friction>
+    </surface>
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0"/>
@@ -379,8 +397,8 @@
       <tf_topic>/model/neato_standalone/tf</tf_topic>
       <frame_id>odom</frame_id>
       <child_frame_id>base_link</child_frame_id>
-      <max_wheel_torque>20</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <max_wheel_torque>1</max_wheel_torque>
+      <max_wheel_acceleration>0.1</max_wheel_acceleration>
       <publish_odom>true</publish_odom>
       <publish_tf>true</publish_tf>
       <odom_publish_frequency>10</odom_publish_frequency>

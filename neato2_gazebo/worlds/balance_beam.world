@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.9">
   <world name="default">
-
     <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" />
     <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu" />
     <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors" />
@@ -22,8 +21,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>50</mu>
+                <mu>0.5</mu>
+                <mu2>0.5</mu2>
+                <fdir1>1 0 0</fdir1>
               </ode>
+              <torsional>
+                <coefficient>0.5</coefficient>
+                <patch_radius>0.1</patch_radius>
+              </torsional>
             </friction>
           </surface>
         </collision>
@@ -50,11 +55,12 @@
     </light>
 
     <include>
-      <uri>model://crazy_maze</uri>
+      <uri>model://bod</uri>
     </include>
 
     <include>
       <uri>model://neato</uri>
+        <pose>1.18732621216939 3.9059452691875607 0.50999989678443447 0 0 180</pose>
     </include>
 
     <scene>

@@ -176,8 +176,10 @@ class xv11():
         self.state = {"LeftWheel_PositionInMM": 0, "RightWheel_PositionInMM": 0}
         self.stop_state = True
         # turn things on
-        time.sleep(4)
+        time.sleep(2)
         self.send_protocol_preference()
+        time.sleep(2)
+        self.send_battery_status()
         time.sleep(2)
         self.setTestMode("on")
         time.sleep(2)
@@ -196,6 +198,10 @@ class xv11():
     def send_keep_alive(self):
         """ Tell the server that we are still alive... basically a noop packet """
         self.port.send("keepalive\n".encode())
+
+    def send_battery_status(self):
+        """Tell the Neato that the battery is OK"""
+        self.port.send(("setfuelgauge 100" + '\n').encode())
 
 
     def setTestMode(self, value):

@@ -14,6 +14,19 @@
           <izz>0.0418184</izz>
         </inertia>
       </inertial>
+      <gravity>1</gravity>
+      <linear_damping>0.05</linear_damping>
+      <angular_damping>0.15</angular_damping>
+
+
+      <collision name='robot_bumpers'>
+        <geometry>
+          <box>
+            <size>0.321 0.335 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+
       <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
         <pose>-0.01 0 0.03 0 -0 0</pose>
         <geometry>
@@ -28,8 +41,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.3</mu>
-              <mu2>0.3</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -47,8 +60,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.3</mu>
-              <mu2>0.3</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -72,8 +85,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -97,8 +110,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -122,8 +135,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -147,8 +160,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
           </friction>
         </surface>
@@ -168,12 +181,14 @@
       </visual>
 
       <sensor name='bumpers' type='contact'>
-        <always_on>1</always_on>
+        <always_on>true</always_on>
         <update_rate>10</update_rate>
-        <topic>/bumper</topic>
         <contact>
-          <collision>base_footprint_fixed_joint_lump__base_link_collision_1</collision>
+          <collision>robot_bumpers</collision>
         </contact>
+        <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact">
+          <topic>/bumper</topic>
+        </plugin>
       </sensor>
 
       <sensor name='camera' type='camera'>
@@ -234,7 +249,7 @@
     </link>
 
     <link name='wheel_left_link'>
-      <pose>0 0.1175 0.025 0 -0 0</pose>
+      <pose>0 0.1175 0.035 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.01</mass>
@@ -266,8 +281,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.3</mu>
+              <mu2>0.3</mu2>
             </ode>
           </friction>
         </surface>
@@ -299,14 +314,14 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <damping>0.05</damping>
+          <friction>0.2</friction>
         </dynamics>
       </axis>
     </joint>
 
     <link name='wheel_right_link'>
-      <pose>0 -0.1175 0.025 0 -0 0</pose>
+      <pose>0 -0.1175 0.035 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.01</mass>
@@ -338,8 +353,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.3</mu>
+              <mu2>0.3</mu2>
             </ode>
           </friction>
         </surface>
@@ -371,8 +386,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <damping>0.05</damping>
+          <friction>0.2</friction>
         </dynamics>
       </axis>
     </joint>
@@ -387,11 +402,11 @@
       <tf_topic>/model/neato_standalone/tf</tf_topic>
       <frame_id>odom</frame_id>
       <child_frame_id>base_link</child_frame_id>
-      <max_wheel_torque>20</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <max_wheel_torque>12.0</max_wheel_torque>
+      <max_wheel_acceleration>1.5</max_wheel_acceleration>
       <publish_odom>true</publish_odom>
       <publish_tf>true</publish_tf>
-      <odom_publish_frequency>10</odom_publish_frequency>
+      <odom_publish_frequency>20</odom_publish_frequency>
     </plugin>
 
     <plugin name="gz::sim::systems::JointStatePublisher" filename="gz-sim-joint-state-publisher-system">

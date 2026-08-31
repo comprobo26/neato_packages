@@ -26,4 +26,4 @@ def generate_launch_description():
     launch_dir = os.path.dirname(__file__)
     return LaunchDescription([IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(launch_dir, 'harmonic_world.py')),
-        launch_arguments={'world_file': 'bod_volcano.world'}.items())])
+        launch_arguments={'world_file': 'balance_beam.world'}.items())])

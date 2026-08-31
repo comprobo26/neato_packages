@@ -24,7 +24,7 @@ def generate_launch_description():
         '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
         '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
         '/imu@sensor_msgs/msg/Imu[gz.msgs.IMU',
-        '/bumper@ros_gz_interfaces/msg/Contacts[gz.msgs.Contacts',
+        '/world/gauntlet_harmonic/model/neato_standalone/link/base_link/sensor/bumpers/contact@ros_gz_interfaces/msg/Contacts[gz.msgs.Contacts',
         '/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
         '/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
         '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
@@ -53,7 +53,8 @@ def generate_launch_description():
             package='ros_gz_bridge',
             executable='parameter_bridge',
             arguments=bridge_topics,
-            remappings=[('/model/neato_standalone/tf', '/tf')],
+            remappings=[('/model/neato_standalone/tf', '/tf'),
+                        ('/world/gauntlet_harmonic/model/neato_standalone/link/base_link/sensor/bumpers/contact', '/bumper')],
             output='screen',
         ),
         Node(
