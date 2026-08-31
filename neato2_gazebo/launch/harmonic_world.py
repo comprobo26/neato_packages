@@ -30,7 +30,6 @@ def generate_launch_description():
         '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
         '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
         '/model/neato_standalone/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
-        '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
     ]
 
     return LaunchDescription([
