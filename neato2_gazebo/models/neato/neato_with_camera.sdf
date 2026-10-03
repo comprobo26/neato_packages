@@ -1,6 +1,6 @@
 <sdf version='1.9'>
   <model name='neato_standalone'>
-    <link name='base_link'>
+    <link name='base_footprint'>
       <pose>0 0 0 0 -0 0</pose>
       <inertial>
         <pose>0.00959 -0 8e-06 0 -0 0</pose>
@@ -266,7 +266,7 @@
 
     <joint name='wheel_left_joint' type='revolute'>
       <child>wheel_left_link</child>
-      <parent>base_link</parent>
+      <parent>base_footprint</parent>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -338,7 +338,7 @@
 
     <joint name='wheel_right_joint' type='revolute'>
       <child>wheel_right_link</child>
-      <parent>base_link</parent>
+      <parent>base_footprint</parent>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -361,7 +361,7 @@
       <odom_topic>/odom</odom_topic>
       <tf_topic>/model/neato_standalone/tf</tf_topic>
       <frame_id>odom</frame_id>
-      <child_frame_id>base_link</child_frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
       <max_wheel_torque>8.0</max_wheel_torque>
       <max_wheel_acceleration>50</max_wheel_acceleration>
       <publish_odom>true</publish_odom>
